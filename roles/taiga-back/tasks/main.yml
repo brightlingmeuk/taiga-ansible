@@ -63,6 +63,8 @@
     - back-install
 
 - name: replace all git instances to use https instead of ssh
+  become: true
+  become_user: "{{ taiga_user }}"
   replace:
     path: "{{ taiga_user_home }}/{{ taiga_back_checkout_dir }}/requirements.txt"
     regexp: '^git\+git(.*)'
