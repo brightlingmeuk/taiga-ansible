@@ -55,3 +55,6 @@ taiga_back_database_user: "{{ taiga_user }}"
 
 # Which Redis host should we connect to?
 taiga_back_redis_host: localhost
+
+# Patch requirements to use https instead of ssh
+taiga_git_force_https: false

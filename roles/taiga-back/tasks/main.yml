@@ -62,6 +62,13 @@
     - install
     - back-install
 
+- name: replace all git instances to use https instead of ssh
+  replace:
+    path: "{{ taiga_user_home }}/{{ taiga_back_checkout_dir }}/requirements.txt"
+    regex: '^git\+git(.*)'
+    replace: 'git+https\1'
+  when: taiga_git_force_https | bool
+
 - name: install Python packages into virtualenv
   become: true
   become_user: "{{ taiga_user }}"
